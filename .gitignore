@@ -1,0 +1,10 @@
+/venv
+/Django_backend/**/migrations/
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore the database file
+/Django_backend/db.sqlite3
