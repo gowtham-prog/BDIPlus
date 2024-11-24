@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "b05fa636-9a5a-4b21-8fea-9fa3612784be",
+		"name": "BDIPlus Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32604647"
+	},
+	"item": [
+		{
+			"name": "create a User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "alanwalker",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "alan",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "walker",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "alanwalker@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "alan123",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{server_url}}/apis/users/create",
+				"description": "Creates an User. In the below example, A guy named alan Walker is Creating an account"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "alanwalker",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "alan123",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{server_url}}/token/",
+				"description": "Generates simple JWT access and refresh Tokens upon submitting User Credentials"
+			},
+			"response": []
+		},
+		{
+			"name": "refresh Token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refresh",
+							"value": "{{refresh}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{server_url}}/token/refresh/",
+				"description": "Generates a new AccessToken with the help of Refresh Token"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Details Using token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{server_url}}/apis/users/get/",
+				"description": "Returns the Current User details. Append the accessToken in Authorization headers."
+			},
+			"response": []
+		},
+		{
+			"name": "Create a task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Go on Tour",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "After the album release, have to go on a Tour",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "pending",
+							"type": "text"
+						},
+						{
+							"key": "priority",
+							"value": "low",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{server_url}}/apis/tasks/",
+				"description": "Creates a new task in the name of the User. In the example, Alan Walker creates a Task to go on tour."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tasks belong to User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{server_url}}/apis/tasks/",
+				"description": "Returns List of all tasks belonging to User"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task by task id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{server_url}}/apis/task/1750734917/",
+				"description": "Returns A particular task with taskid."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"1750734917\",\r\n    \"title\": \"Compose new album\",\r\n    \"description\": \"Album with Multiple songs\",\r\n    \"due_date\": null,\r\n    \"status\": \"running\",\r\n    \"priority\": \"high\",\r\n    \"created_by\": {\r\n        \"id\": \"6521019669\",\r\n        \"username\": \"alanwalker\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"email\": \"alanwalker@mail.com\",\r\n        \"password\": \"pbkdf2_sha256$870000$Yn0i8AfvV1REtbBDtsFrMG$rU5tsd0frfE6VkuSln69dbn2V0gPGRdx4HVl6n7taF4=\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{server_url}}/apis/task/1750734917/",
+				"description": "Updates a particular task"
+			},
+			"response": []
+		},
+		{
+			"name": "update a task by using patch",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "status",
+							"value": "completed",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{server_url}}/apis/task/1750734917/",
+				"description": "Edits a Particular Task"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{server_url}}/apis/task/1750734917/",
+				"description": "Deletes a Particular task."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server_url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

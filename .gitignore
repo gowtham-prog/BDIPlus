@@ -1,6 +1,7 @@
 /venv
 /Django_backend/**/migrations/
 
+.vscode
 # Ignore compiled Python files
 *.pyc
 *.pyo
@@ -8,3 +9,28 @@ __pycache__/
 
 # Ignore the database file
 /Django_backend/db.sqlite3
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+react_frontend/node_modules
+react_frontend/.pnp
+react_frontend/.pnp.js
+
+# testing
+react_frontend/coverage
+
+# production
+react_frontend/build
+react_frontend/.env
+react_frontend/package-lock.json
+# misc
+react_frontend/.DS_Store
+react_frontend/.env.local
+react_frontend/.env.development.local
+react_frontend/.env.test.local
+react_frontend/.env.production.local
+
+react_frontend/npm-debug.log*
+react_frontend/yarn-debug.log*
+react_frontend/yarn-error.log*
